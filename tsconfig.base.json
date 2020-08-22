@@ -18,7 +18,8 @@
     "lib": ["es2018", "dom"],
     "paths": {
       "ngx-feature-flags-testing": ["projects/ngx-feature-flags-testing/src/public-api.ts"]
-    }
+    },
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
