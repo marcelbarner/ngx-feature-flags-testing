@@ -6,5 +6,12 @@
 */
 {
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./projects/ngx-feature-flags-testing/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ngx-feature-flags-testing/tsconfig.spec.json"
+    }
+  ]
 }
