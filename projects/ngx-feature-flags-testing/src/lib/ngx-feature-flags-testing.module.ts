@@ -2,13 +2,17 @@ import { NgModule } from '@angular/core';
 import { NgxFeatureFlagsModule, NgxFeatureFlagsService } from 'ngx-feature-flags';
 import { NgxFeatureFlagsConfigurationService } from './ngx-feature-flags-configuration.service';
 
+export function emptyFactory() {
+  return Promise.resolve(new Map<string, boolean>());
+}
+
 @NgModule({
   imports: [NgxFeatureFlagsModule],
   providers: [
     {
       provide: NgxFeatureFlagsService,
       // tslint:disable-next-line: typedef
-      useValue: new NgxFeatureFlagsService(() => Promise.resolve(new Map<string, boolean>())),
+      useValue: new NgxFeatureFlagsService(emptyFactory),
     },
     NgxFeatureFlagsConfigurationService,
   ],
