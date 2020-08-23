@@ -1,10 +1,9 @@
 {
   "name": "ngx-feature-flags-testing",
-  "version": "1.2.0",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^10.0.11",
-    "@angular/core": "^10.0.11",
-    "ngx-feature-flags": "^1.0.0"
+    "@angular/core": "^10.0.11"
   },
   "dependencies": {
     "tslib": "^2.0.0"
@@ -12,10 +11,7 @@
   "keywords": [
     "angular",
     "angular 2",
-    "ngx-feature-flags-testing",
-    "feature-flags",
-    "ngx-feature-flags",
-    "testing"
+    "ngx-feature-flags-testing"
   ],
   "license": "MIT",
   "publishConfig": {
