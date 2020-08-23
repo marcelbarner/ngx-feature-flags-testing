@@ -3,13 +3,10 @@ import { NgxFeatureFlagsService, NgxFeatureFlagsModule } from 'ngx-feature-flags
 import { NgxFeatureFlagsTestingModule } from './ngx-feature-flags-testing.module';
 
 describe('NgxFeatureFlagsTestingModule', () => {
-  describe.each([
-    ['per default', NgxFeatureFlagsTestingModule],
-    ['with single flag', NgxFeatureFlagsTestingModule.withFeatureFlag('feature')],
-  ])('importing the module %s', (a, b) => {
+  describe('importing the module per default', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [b],
+        imports: [NgxFeatureFlagsTestingModule],
       });
     });
     it('should provide the NgxFeatureFlagsService', () => {
