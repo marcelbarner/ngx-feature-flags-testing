@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
-import { NgxFeatureFlagsTestingComponent } from './ngx-feature-flags-testing.component';
+import { NgxFeatureFlagsModule, NgxFeatureFlagsService } from 'ngx-feature-flags';
 
 @NgModule({
-  declarations: [NgxFeatureFlagsTestingComponent],
-  imports: [],
-  exports: [NgxFeatureFlagsTestingComponent],
+  imports: [NgxFeatureFlagsModule],
+  providers: [
+    {
+      provide: NgxFeatureFlagsService,
+      // tslint:disable-next-line: typedef
+      useValue: new NgxFeatureFlagsService(() => Promise.resolve(new Map<string, boolean>())),
+    },
+  ],
+  exports: [NgxFeatureFlagsModule],
 })
 export class NgxFeatureFlagsTestingModule {}
