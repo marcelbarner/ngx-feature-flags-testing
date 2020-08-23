@@ -9,6 +9,15 @@ describe('ComponentTestComponent', () => {
   describe.each([
     ['per default', NgxFeatureFlagsTestingModule],
     ['with single flag', NgxFeatureFlagsTestingModule.withFeatureFlag('featureA')],
+    [
+      'with multiple flags',
+      NgxFeatureFlagsTestingModule.withFeatureFlags(
+        new Map([
+          ['featureA', false],
+          ['featureB', true],
+        ])
+      ),
+    ],
   ])('when import %s', (a, b) => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
@@ -36,34 +45,42 @@ describe('ComponentTestComponent', () => {
       expect(element).not.toBeNull();
     });
   });
-  describe.each([['with single flag enabled', NgxFeatureFlagsTestingModule.withFeatureFlag('featureA', true)]])(
-    'when import %s',
-    (a, b) => {
-      beforeEach(async(() => {
-        TestBed.configureTestingModule({
-          declarations: [ComponentTestComponent],
-          imports: [b],
-        }).compileComponents();
-      }));
+  describe.each([
+    ['with single flag enabled', NgxFeatureFlagsTestingModule.withFeatureFlag('featureA', true)],
+    [
+      'with multiple flags enabled',
+      NgxFeatureFlagsTestingModule.withFeatureFlags(
+        new Map([
+          ['featureA', true],
+          ['featureB', false],
+        ])
+      ),
+    ],
+  ])('when import %s', (a, b) => {
+    beforeEach(async(() => {
+      TestBed.configureTestingModule({
+        declarations: [ComponentTestComponent],
+        imports: [b],
+      }).compileComponents();
+    }));
 
-      beforeEach(() => {
-        fixture = TestBed.createComponent(ComponentTestComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-      });
+    beforeEach(() => {
+      fixture = TestBed.createComponent(ComponentTestComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
 
-      it('should create', () => {
-        expect(component).toBeTruthy();
-      });
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
 
-      it('should show the block #featureAOn', () => {
-        const element = fixture.debugElement.query(By.css('#featureAOn'));
-        expect(element).not.toBeNull();
-      });
-      it('should not show the block #featureAOff', () => {
-        const element = fixture.debugElement.query(By.css('#featureAOff'));
-        expect(element).toBeNull();
-      });
-    }
-  );
+    it('should show the block #featureAOn', () => {
+      const element = fixture.debugElement.query(By.css('#featureAOn'));
+      expect(element).not.toBeNull();
+    });
+    it('should not show the block #featureAOff', () => {
+      const element = fixture.debugElement.query(By.css('#featureAOff'));
+      expect(element).toBeNull();
+    });
+  });
 });
