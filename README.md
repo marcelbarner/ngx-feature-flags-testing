@@ -20,7 +20,6 @@ ngx-feature-flags-testing is a package to simplify writting tests when you use [
 
 - ✅ Import all parts of [ngx-feature-flags](https://www.npmjs.com/package/ngx-feature-flags) without additional configuration.
 - ✅ Configure single feature flag during import
-- ✅ Configure multiple feature flags during import
 
 ## Table of Contents
 
