@@ -21,7 +21,6 @@ ngx-feature-flags-testing is a package to simplify writting tests when you use [
 - ✅ Import all parts of [ngx-feature-flags](https://www.npmjs.com/package/ngx-feature-flags) without additional configuration.
 - ✅ Configure single feature flag during import
 - ✅ Configure multiple feature flags during import
-- ✅ Edit state during runtime with set or toggle
 
 ## Table of Contents
 
@@ -142,28 +141,6 @@ describe('Import with flag configuration disabled', () => {
     expect(spectator.query('p')).toHaveText('FeatureB is disabled');
   });
 });
-```
-
-### Set a specific feature flag
-
-```ts
-beforeEach(() => {
-    TestBed.configureTestingModule({imports: [NgxFeatureFlagsTestingModule]});
-    configure = TestBed.get(NgxFeatureFlagsConfigurationService);
-    service = TestBed.get(NgxFeatureFlagsService);
-  });
-
-  it('should disable feature', () => {
-    // Enable a specific feature
-    configure.setFeatureFlag('feature', true);
-    expect(service.featureOn('feature')).toBeTrue();
-    //disable a specific feature
-    configure.setFeatureFlag('feature', false);
-    expect(service.featureOn('feature')).toBeFalse();
-    // Toggle the state of a specific feature
-    configure.toggleFeatureFlag('feature');
-    expect(service.featureOn('feature')).toBeTrue());
-  });
 ```
 
 ## FAQ

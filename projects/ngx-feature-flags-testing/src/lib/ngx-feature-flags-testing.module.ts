@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { NgxFeatureFlagsModule, NgxFeatureFlagsService } from 'ngx-feature-flags';
-import { NgxFeatureFlagsConfigurationService } from './ngx-feature-flags-configuration.service';
 
 @NgModule({
   imports: [NgxFeatureFlagsModule],
@@ -10,7 +9,6 @@ import { NgxFeatureFlagsConfigurationService } from './ngx-feature-flags-configu
       // tslint:disable-next-line: typedef
       useValue: new NgxFeatureFlagsService(() => Promise.resolve(new Map<string, boolean>())),
     },
-    NgxFeatureFlagsConfigurationService,
   ],
   exports: [NgxFeatureFlagsModule],
 })
@@ -57,7 +55,6 @@ export class NgxFeatureFlagsTestingModule {
         provide: NgxFeatureFlagsService,
         useValue: featureFlagService,
       },
-      NgxFeatureFlagsConfigurationService,
     ];
   }
   // tslint:disable-next-line: typedef
