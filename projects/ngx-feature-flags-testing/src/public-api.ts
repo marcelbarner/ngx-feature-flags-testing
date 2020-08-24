@@ -3,3 +3,4 @@
  */
 
 export * from './lib/ngx-feature-flags-testing.module';
+export * from './lib/ngx-feature-flags-configuration.service';
